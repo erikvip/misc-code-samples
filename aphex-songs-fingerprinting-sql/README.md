@@ -35,23 +35,23 @@ were duplicates, using acoustic fingerprinting (and track length matching, when 
 
 fpcalc -raw outputs integers which need to be processed in binary.  The numbers correspond to the low, mid, and high frequencies for each timeframe. 1663937366 is an example, which we will compare with 1648212742. 
 
-1663937366 in binary is 1100011001011011010101101010110
-1648212742 in binary is 1100010001111011011101100000110
+1663937366 in binary is 1100011001011011010101101010110   
+1648212742 in binary is 1100010001111011011101100000110   
+   
+First we do a logical XOR:   
+1100011001011011010101101010110   
+1100010001111011011101100000110   
+=
+0000001000100000001000001010000   
 
-First we do a logical XOR:
-1100011001011011010101101010110
-1100010001111011011101100000110
--------------------------------
-0000001000100000001000001010000
+Now count the number of 1's:   
+000000**1**000**1**0000000**1**00000**1**0**1**0000   
 
-Now count the number of 1's:
-000000**1**000**1**0000000**1**00000**1**0**1**0000
+So the difference here is 5.    
 
-So the difference here is 5. 
+We do this for all numbers, adding the results to get the final 'score'.  The lower the score, the closer the match. Generally speaking, anything under 10,000 is a good match, and below 1,000 is a almost sure match.    
 
-We do this for all numbers, adding the results to get the final 'score'.  The lower the score, the closer the match. Generally speaking, anything under 10,000 is a good match, and below 1,000 is a almost sure match. 
-
-**However** pay close attention to the times. A 5 second song may have a close match to a 120 sec song, simply because there's not much data to work with. The above 1,000/10,000 is based on 90 seconds of sampling. 
+**However** pay close attention to the times. A 5 second song may have a close match to a 120 sec song, simply because there's not much data to work with. The above 1,000/10,000 is based on 90 seconds of sampling.    
 
  ## Code
 
