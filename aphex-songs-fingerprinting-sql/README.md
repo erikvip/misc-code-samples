@@ -51,9 +51,9 @@ So the difference here is 5.
 
 We do this for all numbers, adding the results to get the final 'score'.  The lower the score, the closer the match. Generally speaking, anything under 10,000 is a good match, and below 1,000 is a almost sure match.    
 
-**However** pay close attention to the times. A 5 second song may have a close match to a 120 sec song, simply because there's not much data to work with. The above 1,000/10,000 is based on 90 seconds of sampling.    
+**However** pay close attention to the times. A 5 second song may have a close match to a 120 sec song, simply because there's not much data to work with. The above 1,000/10,000 is based on 90 seconds of sampling. 
 
- ## Code
+## Songs
 
  The basic SQL for looking for duplicates looks like this:
  ```sql
