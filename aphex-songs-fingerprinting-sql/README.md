@@ -41,7 +41,7 @@ fpcalc -raw outputs integers which need to be processed in binary.  The numbers 
 First we do a logical XOR:   
 1100011001011011010101101010110   
 1100010001111011011101100000110   
-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=   
 0000001000100000001000001010000   
 
 Now count the number of 1's:   
