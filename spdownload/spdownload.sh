@@ -27,8 +27,8 @@ main() {
 	MAX_SEASON=$(($CUR_YEAR - 1997 + 1));
 
 	if [ -z "${REQSEASON}" ]; then
-		echo "No season number specified. Assuming re-check of all episodes 1-19...";
-		for s in {1..19}; do
+		echo "No season number specified. Assuming re-check of all seasons...";
+		for s in $(seq 1 "${MAX_SEASON}"); do
 			echo "Downloading season ${s}...";
 			download_season "${s}";
 		done;
@@ -102,8 +102,8 @@ download_season() {
 			echo -ne "epfilelist: ${epfilelist}"; echo
 			echo -ne "Combining files to one mp4 video via ffmpeg concat";
 			tput sgr0; echo
-			echo Command: ffmpeg -loglevel fatal -stats -f concat -i "${epfilelist}" -c copy "${EPSINGLEFILE}.mp4"
-			ffmpeg -loglevel fatal -stats -f concat -i "${epfilelist}" -c copy "${EPSINGLEFILE}.mp4"
+			#echo Command: ffmpeg -loglevel fatal -stats -f concat -i "${epfilelist}" -c copy "${EPSINGLEFILE}.mp4"
+			ffmpeg -loglevel warning -safe 0 -stats -f concat -i "${epfilelist}" -c copy "${EPSINGLEFILE}.mp4"
 			echo; tput bold; echo -e "Done. Created ${EPSINGLEFILE}.mp4"; echo -ne "Moving into ${ROOTDIR}/videos/s${SEASON}";tput sgr0; echo;
 			mv "${EPSINGLEFILE}.mp4" "${ROOTDIR}/videos/s${SEASON}/";
 			mv ${ROOTDIR}/*.mp4 ${ROOTDIR}/tmp/;
